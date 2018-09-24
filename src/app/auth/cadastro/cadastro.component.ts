@@ -56,8 +56,4 @@ export class CadastroComponent implements OnInit {
     }, {validators: [confirmacaoSenhaValidator]});
 
   }
-
-  reset() {
-    this.createForm();
-  }
 }
