@@ -3,9 +3,15 @@
   <mat-grid-list cols="1" rowHeight="4:1">
     <mat-grid-tile>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Login" formControlName="login" [errorStateMatcher]="matcher">
+        <input matInput placeholder="E-mail" formControlName="login" [errorStateMatcher]="matcher">
         <mat-error *ngIf="cadastroForm.controls['login'].hasError('required')">
-          Login é <strong>obrigatório</strong>
+          E-mail é <strong>obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.controls['login'].hasError('email')">
+          E-mail <strong>inválido</strong>
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.controls['login'].hasError('emailTaken')">
+          E-mail <strong>já cadastrado</strong>
         </mat-error>
       </mat-form-field>
     </mat-grid-tile>
@@ -14,6 +20,9 @@
         <input matInput placeholder="Nome" formControlName="nome" [errorStateMatcher]="matcher">
         <mat-error *ngIf="cadastroForm.controls['nome'].hasError('required')">
           Nome é <strong>obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.controls['nome'].hasError('minlength')">
+          Nome <strong>inválido</strong>
         </mat-error>
       </mat-form-field>
     </mat-grid-tile>

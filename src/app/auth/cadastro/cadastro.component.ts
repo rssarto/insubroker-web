@@ -2,12 +2,11 @@ import { AuthService } from './../auth.service';
 import { ConfirmacaoSenhaErrorStateMatcher } from './confirmacaoSenha.errorstatematcher';
 import { AppErrorStateMatcher } from './../../shared/app.errorstatematcher';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { confirmacaoSenhaValidator } from './confirmacao-senha.directive';
 import { Cadastro } from '../model/cadastro.model';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AlertDialogComponent } from '../../shared/dialog/alert-dialog/alert-dialog.component';
 import { DialogService } from '../../shared/dialog/dialog.service';
+import { existingEmailValidator } from './email.validator';
 
 @Component({
   selector: 'app-cadastro',
@@ -39,10 +38,14 @@ export class CadastroComponent implements OnInit {
   createForm() {
     this.cadastroForm = new FormGroup({
       login: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.email
+      ], [
+        existingEmailValidator(this.cadastroService)
       ]),
       nome: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(5)
       ]),
       senha: new FormControl('', [
         Validators.required

@@ -1,3 +1,3 @@
 export class Cadastro {
-  constructor(private nome: string, private senha: string, private login: string, private confirmacaoSenha: string) {}
+  constructor(public nome: string, public senha: string, public login: string, public confirmacaoSenha: string) {}
 }

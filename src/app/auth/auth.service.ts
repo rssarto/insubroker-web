@@ -1,5 +1,5 @@
 import { Cadastro } from './model/cadastro.model';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 const cadastros: Cadastro[] = [];
 
@@ -12,6 +12,15 @@ export class AuthService {
       }, 500);
     });
     return of(actionPromise);
+  }
+
+  find(email: string): Observable<Cadastro> {
+    let cadastro: Cadastro = null;
+    const findIndex = cadastros.findIndex((value: Cadastro) => value.login === email);
+    if ( findIndex !== -1 ) {
+      cadastro = cadastros[findIndex];
+    }
+    return of(cadastro);
   }
 
 }
