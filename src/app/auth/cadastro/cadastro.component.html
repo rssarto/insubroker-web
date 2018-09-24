@@ -1,0 +1,44 @@
+<form [formGroup]="cadastroForm" [class.centralized]="true" (ngSubmit)="onSubmit()">
+  <h1>Cadastro</h1>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Login" formControlName="login" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="cadastroForm.controls['login'].hasError('required')">
+          Login é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" formControlName="nome" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="cadastroForm.controls['nome'].hasError('required')">
+          Nome é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Senha" formControlName="senha" [errorStateMatcher]="matcher" type="password">
+        <mat-error *ngIf="cadastroForm.controls['senha'].hasError('required')">
+          Senha é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Confirmação Senha" formControlName="confirmacaoSenha" [errorStateMatcher]="confirmacaoSenhaMatcher"
+          type="password">
+        <mat-error *ngIf="cadastroForm.controls['confirmacaoSenha'].hasError('required')">
+          Confirmação Senha é <strong>obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.hasError('confirmacaoSenhaDiferente')">
+          Confirmação Senha é <strong>diferente</strong> da Senha.
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!cadastroForm.valid ? true : false">Confirmar</button>
+  </div>
+</form>

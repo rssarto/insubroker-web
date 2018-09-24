@@ -1,0 +1,17 @@
+<form [formGroup]="loginForm" [class.centralized]="true">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Login" formControlName="loginFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('required')">
+      Login é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput type="password" placeholder="Senha" formControlName="passwordFormControl">
+    <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('required')">
+      Senha é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+  <div class="button-row">
+    <button mat-raised-button color="primary" [disabled]="!loginForm.valid ? true : false">Confirmar</button>
+  </div>
+</form>

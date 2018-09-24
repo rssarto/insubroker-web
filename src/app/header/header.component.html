@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" [class.mat-elevation-z6]="true">
+  <mat-toolbar-row>
+    <mat-icon routerLink="/">
+      <fa-icon [icon]="faIcons.faMarker"></fa-icon>InsuBroker
+    </mat-icon>
+    <span class="example-spacer"></span>
+    <mat-icon [matMenuTriggerFor]="menu">
+      <fa-icon [icon]="faIcons.faBars"></fa-icon>
+    </mat-icon>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faHome"></fa-icon>
+        </mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faLock"></fa-icon>
+        </mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item routerLink="/cadastro">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faUserCircle"></fa-icon>
+        </mat-icon>
+        <span>Cadastro</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* FORM STYLES */
+form.centralized{
+  width: 100%;
+  padding-top: 5%;
+  margin: auto
+}
+
+@media(min-width: 600px){
+  form.centralized{
+    width: 50%;
+  }
+}
+
+@media(min-width: 768px){
+  form.centralized{
+    width: 30%;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
