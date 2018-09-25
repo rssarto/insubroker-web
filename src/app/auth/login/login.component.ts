@@ -6,6 +6,7 @@ import { AuthService } from '@app/auth/auth.service';
 import { SessionService } from '@app/auth/store/session.service';
 import { LogService } from '@app/shared/service/log.service';
 import { Router } from '@angular/router';
+import { DialogService } from '@app/shared/dialog/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private sessionService: SessionService,
               private logService: LogService,
-              private router: Router) { }
+              private router: Router,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
   }
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
         this.logService.log(value);
         this.loginForm.reset();
         this.router.navigate(['']);
+        this.dialogService.alertSnackBar(`Bem vindo ${value.name}`);
       }
     );
   }
