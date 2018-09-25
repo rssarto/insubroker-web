@@ -8,6 +8,7 @@ import { confirmacaoSenhaValidator } from '@app/auth/cadastro/confirmacao-senha.
 import { Usuario } from '@app/shared/model/usuario.model';
 import { DialogService } from '@app/shared/dialog/dialog.service';
 import { existingEmailValidator } from '@app/auth/email.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,7 +20,10 @@ export class CadastroComponent implements OnInit {
   confirmacaoSenhaMatcher = new ConfirmacaoSenhaErrorStateMatcher();
   cadastroForm: FormGroup;
 
-  constructor(private cadastroService: AuthService, private dialogService: DialogService, private logService: LogService) {
+  constructor(private cadastroService: AuthService,
+              private dialogService: DialogService,
+              private logService: LogService,
+              private router: Router) {
     logService.log('constructor CadastroComponent');
   }
 
@@ -29,6 +33,7 @@ export class CadastroComponent implements OnInit {
       .subscribe(() => {
         this.dialogService.alertSnackBar('Cadastro realizado com sucesso.');
         this.cadastroForm.reset();
+        this.router.navigate(['login']);
       });
   }
 

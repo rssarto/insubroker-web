@@ -14,17 +14,23 @@
         </mat-icon>
         <span>Home</span>
       </button>
-      <button mat-menu-item routerLink="/login">
+      <button mat-menu-item routerLink="/login" *ngIf="!sessionQuery.isLoggedIn()">
         <mat-icon>
           <fa-icon [icon]="faIcons.faLock"></fa-icon>
         </mat-icon>
         <span>Login</span>
       </button>
-      <button mat-menu-item routerLink="/cadastro">
+      <button mat-menu-item routerLink="/cadastro" *ngIf="!sessionQuery.isLoggedIn()">
         <mat-icon>
           <fa-icon [icon]="faIcons.faUserCircle"></fa-icon>
         </mat-icon>
         <span>Cadastro</span>
+      </button>
+      <button mat-menu-item (click)="logout()" *ngIf="sessionQuery.isLoggedIn()">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faSignOutAlt"></fa-icon>
+        </mat-icon>
+        <span>Sair</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>

@@ -1,8 +1,9 @@
+import { SessionService } from '@app/auth/store/session.service';
 import { Component, OnInit } from '@angular/core';
-import { faMarker } from '@fortawesome/free-solid-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import * as faIcons from '@fortawesome/free-solid-svg-icons';
+import { SessionQuery } from '@app/auth/store/session.query';
+import { LogService } from '@app/shared/service/log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +13,19 @@ import * as faIcons from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
   /*icons*/
   faIcons = faIcons;
-  faMarker = faMarker;
-  faBars = faBars;
-  faPhone = faPhone;
 
-  constructor() { }
+  constructor(protected sessionQuery: SessionQuery,
+              private sessionService: SessionService,
+              private logService: LogService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.logService.log('[HeaderComponent.logout]: logging out.');
+    this.sessionService.logout();
+    this.router.navigate(['']);
   }
 
 }
