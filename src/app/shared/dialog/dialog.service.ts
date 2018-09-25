@@ -1,7 +1,7 @@
-import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertDialogComponent } from '@app/shared/dialog/alert-dialog/alert-dialog.component';
 
 @Injectable({
   providedIn: 'root'

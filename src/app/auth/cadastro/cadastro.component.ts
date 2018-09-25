@@ -1,12 +1,13 @@
-import { AuthService } from './../auth.service';
-import { ConfirmacaoSenhaErrorStateMatcher } from './confirmacaoSenha.errorstatematcher';
-import { AppErrorStateMatcher } from './../../shared/app.errorstatematcher';
+import { LogService } from '@app/shared/service/log.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { confirmacaoSenhaValidator } from './confirmacao-senha.directive';
-import { Cadastro } from '../model/cadastro.model';
-import { DialogService } from '../../shared/dialog/dialog.service';
-import { existingEmailValidator } from './email.validator';
+import { AuthService } from '@app/auth/auth.service';
+import { ConfirmacaoSenhaErrorStateMatcher } from '@app/auth/cadastro/confirmacaoSenha.errorstatematcher';
+import { AppErrorStateMatcher } from '@app/shared/app.errorstatematcher';
+import { confirmacaoSenhaValidator } from '@app/auth/cadastro/confirmacao-senha.directive';
+import { Usuario } from '@app/shared/model/usuario.model';
+import { DialogService } from '@app/shared/dialog/dialog.service';
+import { existingEmailValidator } from '@app/auth/email.validator';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,13 +19,13 @@ export class CadastroComponent implements OnInit {
   confirmacaoSenhaMatcher = new ConfirmacaoSenhaErrorStateMatcher();
   cadastroForm: FormGroup;
 
-  constructor(private cadastroService: AuthService, private dialogService: DialogService) {
-    console.log('constructor CadastroComponent');
+  constructor(private cadastroService: AuthService, private dialogService: DialogService, private logService: LogService) {
+    logService.log('constructor CadastroComponent');
   }
 
   onSubmit() {
-    console.log(this.cadastroForm);
-    this.cadastroService.cadastrar(<Cadastro>this.cadastroForm.value)
+    this.logService.log(this.cadastroForm);
+    this.cadastroService.cadastrar(<Usuario>this.cadastroForm.value)
       .subscribe(() => {
         this.dialogService.alertSnackBar('Cadastro realizado com sucesso.');
         this.cadastroForm.reset();

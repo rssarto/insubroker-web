@@ -1,10 +1,12 @@
-import { Cadastro } from './model/cadastro.model';
+import { Usuario } from '@app/shared/model/usuario.model';
 import { of, Observable } from 'rxjs';
+import { Credential } from '@app/auth/model/credential.model';
+import { SessionState } from '@app/auth/store/session.store';
 
-const cadastros: Cadastro[] = [];
+const cadastros: Usuario[] = [];
 
 export class AuthService {
-  cadastrar(cadastro: Cadastro) {
+  cadastrar(cadastro: Usuario) {
     const actionPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
         cadastros.push(cadastro);
@@ -14,13 +16,17 @@ export class AuthService {
     return of(actionPromise);
   }
 
-  find(email: string): Observable<Cadastro> {
-    let cadastro: Cadastro = null;
-    const findIndex = cadastros.findIndex((value: Cadastro) => value.login === email);
+  find(email: string): Observable<Usuario> {
+    let cadastro: Usuario = null;
+    const findIndex = cadastros.findIndex((value: Usuario) => value.login === email);
     if ( findIndex !== -1 ) {
       cadastro = cadastros[findIndex];
     }
     return of(cadastro);
+  }
+
+  login(credential: Credential) {
+    return of({token: 'token', name: 'RICARDO SOARES SARTO'});
   }
 
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" [class.centralized]="true">
+<form [formGroup]="loginForm" [class.centralized]="true" (ngSubmit)="login()">
   <mat-form-field class="full-width">
     <input matInput placeholder="E-mail" formControlName="loginFormControl" [errorStateMatcher]="matcher">
     <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('required')">
@@ -7,14 +7,17 @@
     <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('email')">
       E-mail <strong>inválido</strong>
     </mat-error>
+    <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('emailNotTaken')">
+      E-mail <strong>não cadastrado</strong>
+    </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput type="password" placeholder="Senha" formControlName="passwordFormControl">
+    <input matInput type="password" placeholder="Senha" formControlName="passwordFormControl" [errorStateMatcher]="matcher">
     <mat-error *ngIf="loginForm.controls['loginFormControl'].hasError('required')">
       Senha é <strong>obrigatório</strong>
     </mat-error>
   </mat-form-field>
   <div class="button-row">
-    <button mat-raised-button color="primary" [disabled]="!loginForm.valid ? true : false">Confirmar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid ? true : false">Confirmar</button>
   </div>
 </form>

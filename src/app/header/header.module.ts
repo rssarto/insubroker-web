@@ -1,9 +1,9 @@
-import { AppModule } from './../app.module';
+import { AppModule } from '@app/app.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header.component';
-import { CoreModule } from '../core/core.module';
-import { AuthModule } from '../auth/auth.module';
+import { HeaderComponent } from '@app/header/header.component';
+import { CoreModule } from '@app/core/core.module';
+import { AuthModule } from '@app/auth/auth.module';
 
 @NgModule({
   imports: [
