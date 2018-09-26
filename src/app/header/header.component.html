@@ -1,10 +1,15 @@
 <mat-toolbar color="primary" [class.mat-elevation-z6]="true">
   <mat-toolbar-row>
-    <mat-icon routerLink="/">
-      <fa-icon [icon]="faIcons.faMarker"></fa-icon>InsuBroker
-    </mat-icon>
+    <button mat-icon-button class="logo">
+        <fa-icon [icon]="faIcons.faMarker"></fa-icon>InsuBroker
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuSeguradora" *ngIf="sessionQuery.isLoggedIn()">Cadastros</button>
+    <mat-menu #menuSeguradora="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
     <span class="example-spacer"></span>
-    <mat-icon [matMenuTriggerFor]="menu">
+    <mat-icon [matMenuTriggerFor]="menu" [class.profile-icon]="true">
       <fa-icon [icon]="sessionQuery.isLoggedIn() ? profileIconService.byName(sessionQuery.name$ | async) : faIcons.faBars"></fa-icon>
     </mat-icon>
     <mat-menu #menu="matMenu">

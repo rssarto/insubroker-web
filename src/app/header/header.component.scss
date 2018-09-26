@@ -1,0 +1,19 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo{
+  width: 80px;
+  font-weight: 600;
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    width: 100px;
+    font-size: 15px;
+  }
+}
+
+.profile-icon {
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+}

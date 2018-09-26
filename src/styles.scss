@@ -5,17 +5,11 @@
 form.centralized{
   width: 100%;
   padding-top: 5%;
-  margin: auto
-}
-
-@media(min-width: 600px){
-  form.centralized{
+  margin: auto;
+  @media(min-width: 600px){
     width: 50%;
   }
-}
-
-@media(min-width: 768px){
-  form.centralized{
+  @media(min-width: 768px){
     width: 30%;
   }
 }
