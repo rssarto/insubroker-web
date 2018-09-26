@@ -5,7 +5,7 @@
     </mat-icon>
     <span class="example-spacer"></span>
     <mat-icon [matMenuTriggerFor]="menu">
-      <fa-icon [icon]="faIcons.faBars"></fa-icon>
+      <fa-icon [icon]="sessionQuery.isLoggedIn() ? profileIconService.byName(sessionQuery.name$ | async) : faIcons.faBars"></fa-icon>
     </mat-icon>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="">

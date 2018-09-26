@@ -1,3 +1,4 @@
+import { ProfileIconService } from '@app/header/profile-icon.service';
 import { SessionService } from '@app/auth/store/session.service';
 import { Component, OnInit } from '@angular/core';
 import * as faIcons from '@fortawesome/free-solid-svg-icons';
@@ -13,11 +14,13 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   /*icons*/
   faIcons = faIcons;
+  faIconProfile = faIcons.faUserCircle;
 
   constructor(protected sessionQuery: SessionQuery,
               private sessionService: SessionService,
               private logService: LogService,
-              private router: Router) { }
+              private router: Router,
+              protected profileIconService: ProfileIconService) { }
 
   ngOnInit() {
   }

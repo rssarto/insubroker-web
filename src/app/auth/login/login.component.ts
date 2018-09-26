@@ -16,13 +16,13 @@ import { DialogService } from '@app/shared/dialog/dialog.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    loginFormControl: new FormControl('', [
+    login: new FormControl('', [
       Validators.required,
       Validators.email
     ], [
       emailNotTaken(this.authService)
     ]),
-    passwordFormControl: new FormControl('', [
+    password: new FormControl('', [
       Validators.required,
     ])
   });
