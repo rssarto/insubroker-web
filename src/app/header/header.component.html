@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" [class.mat-elevation-z6]="true">
   <mat-toolbar-row>
-    <button mat-icon-button class="logo">
+    <button mat-icon-button class="logo" routerLink="/">
         <fa-icon [icon]="faIcons.faMarker"></fa-icon>InsuBroker
     </button>
     <button mat-button [matMenuTriggerFor]="menuSeguradora" *ngIf="sessionQuery.isLoggedIn()">Cadastros</button>

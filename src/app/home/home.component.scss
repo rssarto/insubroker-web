@@ -7,6 +7,10 @@ mat-grid-tile {
       width: $iconSize + 22px;
     }
     mat-icon {
+      font-size: 20px;
+      @media screen and (min-width: 600px) {
+        font-size: $iconSize - 50px;
+      }
       @media screen and (min-width: 1024px) {
         font-size: $iconSize
       }
