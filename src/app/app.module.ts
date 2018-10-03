@@ -7,6 +7,7 @@ import { AppComponent } from '@app/app.component';
 import { HeaderModule } from '@app/header/header.module';
 import { HomeComponent } from '@app/home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

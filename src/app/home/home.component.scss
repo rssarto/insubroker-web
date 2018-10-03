@@ -1,0 +1,15 @@
+$iconSize: 80px;
+
+mat-grid-tile {
+  background: #7b7b7b42;
+  div {
+    @media screen and (min-width: 1024px) {
+      width: $iconSize + 22px;
+    }
+    mat-icon {
+      @media screen and (min-width: 1024px) {
+        font-size: $iconSize
+      }
+    }
+  }
+}
