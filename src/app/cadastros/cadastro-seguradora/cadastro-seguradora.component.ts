@@ -7,6 +7,9 @@ import { DialogService } from '@app/shared/dialog/dialog.service';
 import { SeguradoraService } from '@app/cadastros/cadastro-seguradora/seguradora.service';
 import * as fromMessages from '@app/shared/static/static.messages';
 import { AppErrorStateMatcher } from '@app/shared/app.errorstatematcher';
+import { SeguradoraModel } from '@app/shared/model/seguradora.model';
+import * as cnpj from '@fnando/cnpj';
+import * as fromSeguradoraValidator from '@app/cadastros/cadastro-seguradora/seguradora.validator';
 
 @Component({
   selector: 'app-cadastro-seguradora',
@@ -34,18 +37,20 @@ export class CadastroSeguradoraComponent implements OnInit {
       cnpj: new FormControl('', [
         Validators.required,
         CpfValidator.validateCpf
+      ], [
+        fromSeguradoraValidator.validateTakenCnpj(this.seguradoraService, this.logService)
       ])
     });
   }
 
   onSubmit() {
-    this.logService.log('[CadastroSeguradoraComponent.onSubmit]', this.seguradoraForm.value);
-    this.seguradoraService.adicionar(this.seguradoraForm.value).subscribe(
+    const seguradora = new SeguradoraModel(this.seguradoraForm.value.razaoSocial, cnpj.format(this.seguradoraForm.value.cnpj));
+    this.logService.log('[CadastroSeguradoraComponent.onSubmit]', seguradora);
+    this.seguradoraService.adicionar(seguradora).subscribe(
       (value) => {
-        this.seguradoraStoreService.cadastrar(this.seguradoraForm.value);
+        this.seguradoraStoreService.add(seguradora);
         this.dialogService.alertSnackBar(fromMessages.messages.cadastro.success);
         this.seguradoraForm.reset();
-        this.logService.log('[CadastroSeguradoraComponent.onSubmit]', this.seguradoraForm);
       }
     );
   }

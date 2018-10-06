@@ -5,8 +5,8 @@ import { SeguradoraStoreService } from '@app/cadastros/cadastro-seguradora/store
 import { SeguradoraStoreQuery } from '@app/cadastros/cadastro-seguradora/store/seguradora-store.query';
 
 export interface SeguradoraState {
-  selectedSeguradoraForEdition: SeguradoraModel;
-  listaSeguradora: SeguradoraModel[];
+  selectedSeguradoraForEdition?: SeguradoraModel;
+  listaSeguradora?: SeguradoraModel[];
 }
 
 export function createInitialState(): SeguradoraState {
@@ -22,12 +22,21 @@ export class SeguradoraStore extends Store<SeguradoraState> {
     super(createInitialState());
   }
 
-  adicionar(seguradora: SeguradoraModel) {
+  add(seguradora: SeguradoraModel) {
     this.logService.log('[SeguradoraStore.adicionar]', seguradora);
     this.setState((state: SeguradoraState) => {
       return {
         selectedSeguradoraForEdition: state.selectedSeguradoraForEdition,
         listaSeguradora: [...state.listaSeguradora, seguradora]
+      };
+    });
+  }
+
+  addListAll(list: SeguradoraModel[]) {
+    this.logService.log('[SeguradoraStore.adicionar]', list);
+    this.setState((state: SeguradoraState) => {
+      return {
+        listaSeguradora: list
       };
     });
   }

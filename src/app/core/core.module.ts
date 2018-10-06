@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,7 +41,9 @@ import { NgxMaskModule } from 'ngx-mask';
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
-    NgxMaskModule
+    NgxMaskModule,
+    MatTableModule,
+    MatTabsModule
   ]
 })
 export class CoreModule { }

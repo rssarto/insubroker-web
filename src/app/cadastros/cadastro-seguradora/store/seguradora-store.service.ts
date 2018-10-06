@@ -1,3 +1,4 @@
+import { tap } from 'rxjs/operators';
 import { SeguradoraStore } from '@app/cadastros/cadastro-seguradora/store/seguradora.store';
 import { SeguradoraService } from '@app/cadastros/cadastro-seguradora/seguradora.service';
 import { SeguradoraModel } from '@app/shared/model/seguradora.model';
@@ -10,8 +11,14 @@ export class SeguradoraStoreService {
               private seguradoraService: SeguradoraService,
               private logService: LogService) {}
 
-  cadastrar(seguradora: SeguradoraModel) {
+  add(seguradora: SeguradoraModel) {
     this.logService.log('[SeguradoraStoreService.cadastrar]', seguradora);
-    this.seguradoraStore.adicionar(seguradora);
+    this.seguradoraStore.add(seguradora);
+  }
+
+  listAll() {
+    return this.seguradoraService.listAll().pipe(
+      tap((value: SeguradoraModel[]) => this.seguradoraStore.addListAll(value))
+    );
   }
 }
