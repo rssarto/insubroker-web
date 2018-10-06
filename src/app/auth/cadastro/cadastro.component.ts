@@ -9,6 +9,7 @@ import { Usuario } from '@app/shared/model/usuario.model';
 import { DialogService } from '@app/shared/dialog/dialog.service';
 import { existingEmailValidator } from '@app/auth/email.validator';
 import { Router } from '@angular/router';
+import * as fromMessages from '@app/shared/static/static.messages';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,14 +25,14 @@ export class CadastroComponent implements OnInit {
               private dialogService: DialogService,
               private logService: LogService,
               private router: Router) {
-    logService.log('constructor CadastroComponent');
+    logService.log('[CadastroComponent.constructor] ');
   }
 
   onSubmit() {
     this.logService.log(this.cadastroForm);
     this.cadastroService.cadastrar(<Usuario>this.cadastroForm.value)
       .subscribe(() => {
-        this.dialogService.alertSnackBar('Cadastro realizado com sucesso.');
+        this.dialogService.alertSnackBar(fromMessages.messages.cadastro.success);
         this.cadastroForm.reset();
         this.router.navigate(['login']);
       });

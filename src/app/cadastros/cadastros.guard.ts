@@ -17,7 +17,7 @@ export class CadastrosGuard implements CanActivate {
     this.logService.log(state);
     const isLoggedIn = this.sessionQuery.isLoggedIn();
     if ( !isLoggedIn ) {
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
     }
     return isLoggedIn;
   }

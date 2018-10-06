@@ -13,16 +13,20 @@ import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
   ],
-  declarations: [],
+  declarations: [
+  ],
   exports: [
+    CommonModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
@@ -34,7 +38,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatGridListModule,
     MatDialogModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule
   ]
 })
 export class CoreModule { }

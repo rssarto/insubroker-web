@@ -1,3 +1,25 @@
-<p>
-  cadastro-seguradora works!
-</p>
+<form [formGroup]="seguradoraForm" (ngSubmit)="onSubmit()" [class.centralized]="true">
+  <h1>Seguradora</h1>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Razão Social" formControlName="razaoSocial">
+        <mat-error *ngIf="seguradoraForm.controls['razaoSocial'].hasError('required')">
+          Razão social <strong>é obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="CNPJ" formControlName="cnpj" mask="00.000.000/0000-00">
+        <mat-error *ngIf="seguradoraForm.controls['cnpj'].hasError('required')">
+          CNPJ <strong>é obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="seguradoraForm.controls['cnpj'].hasError('invalidCnpj')">
+          CNPJ <strong>é inválido</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!seguradoraForm.valid ? true : false">Confirmar</button>
+</form>

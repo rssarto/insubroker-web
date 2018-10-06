@@ -1,10 +1,15 @@
+import { CoreModule } from '@app/core/core.module';
 import { NgModule } from '@angular/core';
-import { CadastroSeguradoraComponent } from './cadastro-seguradora/cadastro-seguradora.component';
 import { CadastrosRouterModule } from '@app/cadastros/cadastros-router.module';
+import { CadastroSeguradoraModule } from '@app/cadastros/cadastro-seguradora/cadastro-seguradora.module';
 
 @NgModule({
-  declarations: [CadastroSeguradoraComponent],
-  imports: [CadastrosRouterModule],
+  declarations: [],
+  imports: [
+    CoreModule,
+    CadastrosRouterModule,
+    CadastroSeguradoraModule
+  ],
   providers: [],
   exports: [CadastrosRouterModule]
 })
