@@ -6,6 +6,7 @@ import { LogService } from '@app/shared/service/log.service';
 import { DialogService } from '@app/shared/dialog/dialog.service';
 import { SeguradoraService } from '@app/cadastros/cadastro-seguradora/seguradora.service';
 import * as fromMessages from '@app/shared/static/static.messages';
+import { AppErrorStateMatcher } from '@app/shared/app.errorstatematcher';
 
 @Component({
   selector: 'app-cadastro-seguradora',
@@ -13,6 +14,7 @@ import * as fromMessages from '@app/shared/static/static.messages';
   styleUrls: ['./cadastro-seguradora.component.css']
 })
 export class CadastroSeguradoraComponent implements OnInit {
+  matcher = new AppErrorStateMatcher();
   seguradoraForm: FormGroup;
 
   constructor(private seguradoraStoreService: SeguradoraStoreService,
@@ -43,6 +45,7 @@ export class CadastroSeguradoraComponent implements OnInit {
         this.seguradoraStoreService.cadastrar(this.seguradoraForm.value);
         this.dialogService.alertSnackBar(fromMessages.messages.cadastro.success);
         this.seguradoraForm.reset();
+        this.logService.log('[CadastroSeguradoraComponent.onSubmit]', this.seguradoraForm);
       }
     );
   }
