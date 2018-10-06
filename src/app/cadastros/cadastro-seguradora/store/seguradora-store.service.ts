@@ -11,8 +11,7 @@ export class SeguradoraStoreService {
               private logService: LogService) {}
 
   cadastrar(seguradora: SeguradoraModel) {
-    this.logService.log('[SeguradoraStoreService.cadastrar]');
-    this.logService.log(seguradora);
+    this.logService.log('[SeguradoraStoreService.cadastrar]', seguradora);
     this.seguradoraStore.adicionar(seguradora);
   }
 }

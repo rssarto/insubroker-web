@@ -37,8 +37,7 @@ export class CadastroSeguradoraComponent implements OnInit {
   }
 
   onSubmit() {
-    this.logService.log('[CadastroSeguradoraComponent.onSubmit]');
-    this.logService.log(this.seguradoraForm.value);
+    this.logService.log('[CadastroSeguradoraComponent.onSubmit]', this.seguradoraForm.value);
     this.seguradoraService.adicionar(this.seguradoraForm.value).subscribe(
       (value) => {
         this.seguradoraStoreService.cadastrar(this.seguradoraForm.value);

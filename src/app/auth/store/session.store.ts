@@ -23,13 +23,13 @@ export class SessionStore extends Store<SessionState> {
 
   login(session: SessionState) {
     this.update(session);
-    this.logService.log('[SessionStore.login]:' + session);
+    this.logService.log('[SessionStore.login]', session);
     this.storageService.saveSession(session);
   }
 
   logout() {
     this.storageService.clearSession();
-    this.logService.log('[SessionStore.logout]:');
+    this.logService.log('[SessionStore.logout]');
     this.update(createInitialState(this.storageService));
   }
 }

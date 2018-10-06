@@ -23,8 +23,7 @@ export class SeguradoraStore extends Store<SeguradoraState> {
   }
 
   adicionar(seguradora: SeguradoraModel) {
-    this.logService.log('[SeguradoraStore.adicionar]');
-    this.logService.log(seguradora);
+    this.logService.log('[SeguradoraStore.adicionar]', seguradora);
     this.setState((state: SeguradoraState) => {
       return {
         selectedSeguradoraForEdition: state.selectedSeguradoraForEdition,

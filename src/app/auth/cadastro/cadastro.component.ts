@@ -25,7 +25,7 @@ export class CadastroComponent implements OnInit {
               private dialogService: DialogService,
               private logService: LogService,
               private router: Router) {
-    logService.log('[CadastroComponent.constructor] ');
+    logService.log('[CadastroComponent.constructor]');
   }
 
   onSubmit() {

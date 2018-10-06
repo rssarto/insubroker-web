@@ -11,10 +11,7 @@ export class CadastrosGuard implements CanActivate {
     private logService: LogService
   ) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.logService.log('CadastrosGuard.canActivate - ActivatedRouteSnapshot: ');
-    this.logService.log(route);
-    this.logService.log('CadastrosGuard.canActivate - RouterStateSnapshot: ');
-    this.logService.log(state);
+    this.logService.log('[CadastrosGuard.canActivate]', route, state);
     const isLoggedIn = this.sessionQuery.isLoggedIn();
     if ( !isLoggedIn ) {
       this.router.navigate(['login']);
