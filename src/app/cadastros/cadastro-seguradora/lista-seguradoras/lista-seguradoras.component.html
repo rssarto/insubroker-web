@@ -19,3 +19,7 @@
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let rowData; columns: columnsToDisplay"></tr>
 </table>
+
+<mat-paginator [length]="dataSource.length$ | async"
+              [pageSize]="3">
+</mat-paginator>

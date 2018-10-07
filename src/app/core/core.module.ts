@@ -14,6 +14,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,7 +49,9 @@ import { NgxMaskModule } from 'ngx-mask';
     MatTableModule,
     MatTabsModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatDividerModule
   ]
 })
 export class CoreModule { }

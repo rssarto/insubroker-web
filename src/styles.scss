@@ -31,16 +31,23 @@ $warn: mat-color($app-warn);
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* FORM STYLES */
-form.centralized{
+form {
   width: 100%;
   padding-top: 1%;
   margin: auto;
+}
+
+form.centralized{
   @media(min-width: 600px){
     width: 50%;
   }
   @media(min-width: 768px){
     width: 50%;
   }
+}
+
+form.login {
+  padding-top: 5%;
 }
 
 .full-width {
@@ -53,7 +60,9 @@ div.container {
 
 /* FOOTER */
 div.footer {
-  padding-top: 30px;
+  display: block;
+  margin-top: 100px;
+  padding-top: 40px;
   padding-bottom: 30px;
   background-color: $primary
 }

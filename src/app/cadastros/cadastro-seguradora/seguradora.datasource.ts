@@ -8,8 +8,10 @@ import { LogService } from '@app/shared/service/log.service';
 export class SeguradoraDataSource implements DataSource<SeguradoraModel> {
     private seguradorasSubject = new BehaviorSubject<SeguradoraModel[]>([]);
     private loadingSubject = new BehaviorSubject<boolean>(false);
+    private lengthSubject = new BehaviorSubject<number>(0);
 
     public loading$ = this.loadingSubject.asObservable();
+    public length$ = this.lengthSubject.asObservable();
 
     constructor(private seguradoraStoreQuery: SeguradoraStoreQuery,
                 private logService: LogService) {}
@@ -50,6 +52,7 @@ export class SeguradoraDataSource implements DataSource<SeguradoraModel> {
         if ( sortDirection === 'desc' ) {
           seguradorasNext = seguradorasNext.reverse();
         }
+        this.lengthSubject.next(seguradorasNext.length);
         this.seguradorasSubject.next(seguradorasNext);
       });
     }

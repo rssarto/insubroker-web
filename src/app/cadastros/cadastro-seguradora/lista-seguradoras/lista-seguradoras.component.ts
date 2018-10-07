@@ -1,3 +1,4 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { LogService } from '@app/shared/service/log.service';
 import { SeguradoraStoreService } from '@app/cadastros/cadastro-seguradora/store/seguradora-store.service';
@@ -5,6 +6,7 @@ import { SeguradoraStoreQuery } from '@app/cadastros/cadastro-seguradora/store/s
 import { MatSort } from '@angular/material/sort';
 import { SeguradoraDataSource } from '@app/cadastros/cadastro-seguradora/seguradora.datasource';
 import { tap } from 'rxjs/operators';
+import { merge } from 'rxjs/index';
 
 @Component({
   selector: 'app-lista-seguradoras',
@@ -16,6 +18,7 @@ export class ListaSeguradorasComponent implements AfterViewInit, OnInit {
   dataSource: SeguradoraDataSource;
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private logService: LogService,
               private seguradoraStoreService: SeguradoraStoreService,
@@ -29,14 +32,14 @@ export class ListaSeguradorasComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.pipe(
+    merge(this.paginator.page, this.sort.sortChange).pipe(
       tap(() => this.loadSeguradorasPage())
     ).subscribe();
   }
 
   loadSeguradorasPage() {
     this.logService.log('[ListaSeguradorasComponent.loadSeguradorasPage]');
-    this.dataSource.loadSeguradoras('', this.sort.direction);
+    this.dataSource.loadSeguradoras('', this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
   }
 
   applyFilter(filter: string) {

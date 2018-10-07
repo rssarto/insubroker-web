@@ -1,8 +1,9 @@
 <form [formGroup]="seguradoraForm" (ngSubmit)="onSubmit()" [class.centralized]="true">
   <mat-tab-group>
     <mat-tab label="Seguradoras">
-        <h1>Cadastro</h1>
+        <h1>Consulta</h1>
         <app-lista-seguradoras></app-lista-seguradoras>
+        <mat-divider></mat-divider>
         <h1>Dados</h1>
         <mat-grid-list cols="1" rowHeight="10:1">
           <mat-grid-tile>

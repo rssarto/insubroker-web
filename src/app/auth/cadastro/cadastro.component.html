@@ -1,6 +1,6 @@
 <form [formGroup]="cadastroForm" [class.centralized]="true" (ngSubmit)="onSubmit()">
   <h1>Cadastro</h1>
-  <mat-grid-list cols="1" rowHeight="4:1">
+  <mat-grid-list cols="1" rowHeight="9:1">
     <mat-grid-tile>
       <mat-form-field class="full-width">
         <input matInput placeholder="E-mail" formControlName="login" [errorStateMatcher]="matcher">
