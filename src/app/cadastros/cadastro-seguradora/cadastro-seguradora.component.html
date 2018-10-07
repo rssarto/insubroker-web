@@ -1,8 +1,10 @@
 <form [formGroup]="seguradoraForm" (ngSubmit)="onSubmit()" [class.centralized]="true">
   <mat-tab-group>
-    <mat-tab label="Inclusão">
-        <h1>Nova Seguradora</h1>
-        <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-tab label="Seguradoras">
+        <h1>Cadastro</h1>
+        <app-lista-seguradoras></app-lista-seguradoras>
+        <h1>Dados</h1>
+        <mat-grid-list cols="1" rowHeight="10:1">
           <mat-grid-tile>
             <mat-form-field class="full-width">
               <input matInput placeholder="Razão Social" formControlName="razaoSocial" [errorStateMatcher]="matcher">
@@ -28,9 +30,8 @@
         </mat-grid-list>
         <button mat-raised-button color="primary" type="submit" [disabled]="!seguradoraForm.valid ? true : false">Confirmar</button>
     </mat-tab>
-    <mat-tab label="Edição">
-        <h1>Editar Seguradora</h1>
-        <app-lista-seguradoras></app-lista-seguradoras>
+    <mat-tab label="Ramos">
+        <h1>Negócios</h1>
     </mat-tab>
   </mat-tab-group>
 </form>
