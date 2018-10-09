@@ -52,7 +52,14 @@ export class SeguradoraDataSource implements DataSource<SeguradoraModel> {
         if ( sortDirection === 'desc' ) {
           seguradorasNext = seguradorasNext.reverse();
         }
+
+        const pageEndIndex = ((pageIndex + 1) * pageSize);
+        const pageStartIndex = pageEndIndex - 3;
+        this.logService.log('[SeguradoraDataSource.loadSeguradoras]', pageStartIndex, pageEndIndex);
         this.lengthSubject.next(seguradorasNext.length);
+        this.logService.log('[SeguradoraDataSource.loadSeguradoras]', seguradorasNext);
+        seguradorasNext = seguradorasNext.slice(pageStartIndex, pageEndIndex);
+        this.logService.log('[SeguradoraDataSource.loadSeguradoras]', seguradorasNext);
         this.seguradorasSubject.next(seguradorasNext);
       });
     }

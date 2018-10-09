@@ -17,6 +17,9 @@ import { SeguradoraStore } from '@app/cadastros/cadastro-seguradora/store/segura
   ],
   providers: [
     SeguradoraService, SeguradoraStore, SeguradoraStoreService, SeguradoraStoreQuery
+  ],
+  exports: [
+    CadastroSeguradoraComponent
   ]
 })
 export class CadastroSeguradoraModule {
