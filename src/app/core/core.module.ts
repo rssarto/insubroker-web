@@ -16,6 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
@@ -51,7 +53,9 @@ import { NgxMaskModule } from 'ngx-mask';
     MatProgressSpinnerModule,
     MatSortModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule,
+    MatExpansionModule
   ]
 })
 export class CoreModule { }

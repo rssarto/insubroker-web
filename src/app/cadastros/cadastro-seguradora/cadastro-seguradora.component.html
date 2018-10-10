@@ -1,7 +1,7 @@
 <form [formGroup]="seguradoraForm" (ngSubmit)="onSubmit()" [class.centralized]="true">
-<h1>Consulta</h1>
-<app-lista-seguradoras></app-lista-seguradoras>
-<mat-divider></mat-divider>
+  <h1>Consulta</h1>
+  <app-lista-seguradoras></app-lista-seguradoras>
+  <mat-divider></mat-divider>
   <h1>Dados</h1>
   <mat-grid-list cols="1" rowHeight="10:1">
     <mat-grid-tile>
@@ -27,5 +27,51 @@
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
+  <h3>Contatos</h3>
+  <div formArrayName="contatos" *ngFor="let contato of getFormArrayContatos().controls; let i = index;" style="width: 100%">
+    <div [formGroupName]="i" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <mat-form-field>
+        <input matInput formControlName="nome" placeholder="Nome" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="getContatoFormGroup(i).controls['nome'].hasError('required')">
+          Nome <strong>é obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="email" placeholder="E-mail" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="getContatoFormGroup(i).controls['nome'].hasError('required')">
+          E-mail <strong>é obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="getContatoFormGroup(i).controls['nome'].hasError('email')">
+          E-mail <strong>inválido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="telefone" placeholder="Telefone" [errorStateMatcher]="matcher" mask="(00)00000-0000">
+        <mat-error *ngIf="getContatoFormGroup(i).controls['telefone'].hasError('required')">
+          Telefone <strong>é obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="cargo" placeholder="Cargo" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="getContatoFormGroup(i).controls['cargo'].hasError('required')">
+          Telefone <strong>é obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-mini-fab color="primary" type="button" *ngIf="i > 0 && (i + 1) <= getFormArrayContatos().controls.length"
+        (click)="removeContato(i)"
+        class="mat-elevation-z8">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faMinus"></fa-icon>
+        </mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" type="button" *ngIf="(i + 1) >= getFormArrayContatos().controls.length"
+        (click)="addContato()"
+        class="mat-elevation-z8">
+        <mat-icon>
+          <fa-icon [icon]="faIcons.faPlus"></fa-icon>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
   <button mat-raised-button color="primary" type="submit" [disabled]="!seguradoraForm.valid ? true : false">Confirmar</button>
 </form>
