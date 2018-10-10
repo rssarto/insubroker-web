@@ -46,7 +46,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="telefone" placeholder="Telefone" [errorStateMatcher]="matcher" mask="(00)00000-0000">
+        <input matInput #inputTelefone formControlName="telefone" placeholder="Telefone" [errorStateMatcher]="matcher" [mask]="'(00)00000-0000'">
         <mat-error *ngIf="getContatoFormGroup(i).controls['telefone'].hasError('required')">
           Telefone <strong>é obrigatório</strong>
         </mat-error>
@@ -57,6 +57,7 @@
           Telefone <strong>é obrigatório</strong>
         </mat-error>
       </mat-form-field>
+      <!-- {{/[1-9]{2}9{1}[0-9]+/.test(inputTelefone.value) ? (00)00000-0000 : (00)0000-0000'}} -->
       <button mat-mini-fab color="primary" type="button" *ngIf="i > 0 && (i + 1) <= getFormArrayContatos().controls.length"
         (click)="removeContato(i)"
         class="mat-elevation-z8">
