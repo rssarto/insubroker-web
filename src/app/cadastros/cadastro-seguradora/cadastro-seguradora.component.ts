@@ -11,6 +11,8 @@ import { SeguradoraModel } from '@app/shared/model/seguradora.model';
 import * as cnpj from '@fnando/cnpj';
 import * as fromSeguradoraValidator from '@app/cadastros/cadastro-seguradora/seguradora.validator';
 import * as faIcons from '@fortawesome/free-solid-svg-icons';
+import * as fromUtilFunctions from '@app/shared/util.function';
+import * as telefoneValidator from '@app/shared/validators/telefone.validator';
 
 @Component({
   selector: 'app-cadastro-seguradora',
@@ -67,6 +69,11 @@ export class CadastroSeguradoraComponent implements OnInit {
     return <FormGroup>this.getFormArrayContatos().controls[index];
   }
 
+  isCelular(value: string): boolean {
+    this.logService.log('CadastroSeguradoraComponent.isCelular', value, fromUtilFunctions.isCelular(value));
+    return fromUtilFunctions.isCelularFormatado(value);
+  }
+
   createContato(): FormGroup {
     return this.formBuilder.group({
       nome: new FormControl('', [
@@ -77,7 +84,8 @@ export class CadastroSeguradoraComponent implements OnInit {
         Validators.email
       ]),
       telefone: new FormControl('', [
-        Validators.required
+        Validators.required,
+        telefoneValidator.validateTelefone
       ]),
       cargo: new FormControl('', [
         Validators.required
