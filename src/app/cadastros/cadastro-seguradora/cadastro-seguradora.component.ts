@@ -17,7 +17,7 @@ import * as telefoneValidator from '@app/shared/validators/telefone.validator';
 @Component({
   selector: 'app-cadastro-seguradora',
   templateUrl: './cadastro-seguradora.component.html',
-  styleUrls: ['./cadastro-seguradora.component.css']
+  styleUrls: ['./cadastro-seguradora.component.scss']
 })
 export class CadastroSeguradoraComponent implements OnInit {
   panelOpenState = false;

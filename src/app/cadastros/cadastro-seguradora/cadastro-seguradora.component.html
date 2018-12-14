@@ -28,7 +28,7 @@
     </mat-grid-tile>
   </mat-grid-list>
   <h3>Contatos</h3>
-  <div formArrayName="contatos" *ngFor="let contato of getFormArrayContatos().controls; let i = index;" style="width: 100%">
+  <div formArrayName="contatos" *ngFor="let contato of getFormArrayContatos().controls; let i = index;" class="form-contatos">
     <div [formGroupName]="i" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
       <mat-form-field>
         <input matInput formControlName="nome" placeholder="Nome" [errorStateMatcher]="matcher">

@@ -38,11 +38,8 @@ form {
 }
 
 form.centralized{
-  @media(min-width: 600px){
-    width: 60%;
-  }
   @media(min-width: 768px){
-    width: 60%;
+    width: 75%;
   }
 }
 
