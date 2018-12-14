@@ -3,13 +3,21 @@ import { of, Observable } from 'rxjs';
 import { Credential } from '@app/auth/model/credential.model';
 import { SessionState } from '@app/auth/store/session.store';
 import { map } from 'rxjs/operators';
+import { environment } from '@env/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 const cadastros: Usuario[] = [
   new Usuario('RICARDO SOARES SARTO', '123456', 'ricardo.soares.sarto@gmail.com')
 ];
 
+@Injectable()
 export class AuthService {
+  constructor(private httpClient: HttpClient) {
+  }
+
   cadastrar(cadastro: Usuario) {
+    /*
     const actionPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
         cadastros.push(cadastro);
@@ -17,6 +25,8 @@ export class AuthService {
       }, 500);
     });
     return of(actionPromise);
+    */
+   return this.httpClient.post(environment.resources.person, cadastro);
   }
 
   find(email: string): Observable<Usuario> {
