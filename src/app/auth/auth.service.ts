@@ -30,12 +30,15 @@ export class AuthService {
   }
 
   find(email: string): Observable<Usuario> {
+    /*
     let cadastro: Usuario = null;
     const findIndex = cadastros.findIndex((value: Usuario) => value.login === email);
     if ( findIndex !== -1 ) {
       cadastro = cadastros[findIndex];
     }
     return of(cadastro);
+    */
+    return this.httpClient.get<Usuario>(environment.resources.person + '/email/' + email);
   }
 
   login(credential: Credential) {
